@@ -1,0 +1,65 @@
+// -*- mode: jsonc -*-
+{
+    // The main configuration for the bar itself
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+
+    // --- MODULES ORDER ---
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "custom/clock" // Switched from 'clock' to the reliable custom script
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "battery",
+        "tray"
+    ],
+
+    // --- MODULES CONFIGURATION ---
+
+    "hyprland/workspaces": {
+        "format": "{name}" // Displays the custom names (I, II, III, etc.) defined in hyprland.conf
+    },
+
+    // --- NEW CUSTOM CLOCK MODULE ---
+    "custom/clock": {
+        "exec": "~/.config/waybar/scripts/clock.sh",
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 Wired",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname} - {ipaddr}/{cidr}"
+    },
+
+    "battery": {
+        "states": {
+            "good": 90,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "tray": {
+        "spacing": 10
+    }
+}

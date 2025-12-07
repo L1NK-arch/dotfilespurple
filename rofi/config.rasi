@@ -1,0 +1,94 @@
+/* --- ELECTRIC VIOLET THEME --- */
+
+/* 1. Define the Color Palette */
+* {
+    /* Base Colors */
+    custom-bg:            #1a1a2e;  /* Darkest Black */
+    custom-surface:       #2c3558;  /* Dark Indigo */
+    custom-accent:        #e856e3;  /* Neon Magenta */
+    custom-text:          #cdd6f4;  /* Soft White */
+
+    /* Global Variables */
+    background-color:     @custom-bg;
+    text-color:           @custom-text;
+}
+
+/* 2. Main Window Configuration */
+window {
+    border:           3px;
+    border-color:     @custom-accent;
+    border-radius:    10px;
+    background-color: @custom-surface;
+    padding:          30px;
+    width:            50%; /* Optional: Adjust width if needed */
+}
+
+/* 3. Input Bar */
+inputbar {
+    children:         [ "prompt", "entry" ];
+    spacing:          0;
+    background-color: @custom-bg;
+    border-radius:    5px;
+    padding:          10px;
+    border:           0;
+}
+
+prompt {
+    text-color:       @custom-accent;
+    background-color: @custom-bg;
+    padding:          0 10px 0 0;
+}
+
+entry {
+    text-color:       @custom-text;
+    background-color: @custom-bg;
+}
+
+/* 4. List View */
+listview {
+    background-color: @custom-surface;
+    columns:          1;
+    lines:            10;
+    spacing:          5px;
+    border:           0;
+    scrollbar:        true;
+}
+
+/* 5. ITEM STYLING (THE FIX FOR YELLOW BARS) */
+
+/* Force ALL rows to use the dark indigo background */
+element {
+    background-color: @custom-surface;
+    text-color:       @custom-text;
+    padding:          8px;
+    border-radius:    5px;
+}
+
+/* Specifically target the alternating rows that are turning yellow */
+element normal.normal, element alternate.normal {
+    background-color: @custom-surface;
+    text-color:       @custom-text;
+}
+
+/* Style the selected entry */
+element selected.normal {
+    background-color: @custom-accent;
+    text-color:       @custom-bg;
+}
+
+/* 6. General Configuration */
+configuration {
+    modi: "drun";
+    show-icons: false;
+    font: "FiraCode Nerd Font 12";
+    scroll-method: 0;
+    terminal: "kitty";
+}
+
+/* 7. Scrollbar Styling */
+scrollbar {
+    handle-color:     @custom-accent;
+    background-color: @custom-surface;
+    handle-width:     8px;
+    padding:          0 0 0 5px; /* Add gap between list and scrollbar */
+}
